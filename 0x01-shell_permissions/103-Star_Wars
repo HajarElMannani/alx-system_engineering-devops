@@ -1,2 +1,2 @@
 #!/bin/bash
-less StarWarsVI
+telnet towel.blinkenglights.nl
