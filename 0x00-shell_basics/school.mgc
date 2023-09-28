@@ -1,2 +1,2 @@
 #!/bin/bash
-find SCHOOL
+file -f  School
