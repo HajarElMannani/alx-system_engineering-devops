@@ -1,2 +1,1 @@
-this repository is for the 0x00.shell, basics project
-
+this directory contains files for the alx shell redirections project
