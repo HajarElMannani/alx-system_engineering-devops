@@ -1,2 +1,2 @@
 #!/bin/bash
-finf -empty | ls -1a
+find -empty | ls -1a
