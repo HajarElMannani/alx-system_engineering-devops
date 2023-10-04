@@ -1,0 +1,2 @@
+#!/bin/bash
+finf -empty | ls -1a
