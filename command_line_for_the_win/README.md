@@ -13,7 +13,7 @@ Complete the 9 next tasks, getting to 27 total.
 1- To establish an sftp connection to the sandbox environment, use the command:
 ```
 sftp username@hostname
-
+```
 2- Enter the password
 
 3- Then navigate to the directory where you want to upload the screenshots using cd command
@@ -21,3 +21,4 @@ sftp username@hostname
 4-Use the command put to upload the files
 ```
 put file_path
+```
