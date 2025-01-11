@@ -1,8 +1,4 @@
 #SSH configuration file for the local SSH client
 Host *
-#     SendEnv LANG LC_*
      IdentityFile ~/.ssh/school
-#     HashKnownHosts yes
-#    GSSAPIAuthentication yes
-#     GSSAPIDelegateCredentials no
      PasswordAuthentication no
