@@ -1,20 +1,9 @@
 #!/usr/bin/env bash
 #Script that configures a new Ubuntu machine
-sudo apt-get install -y nginx
-sudo mkdir -p /var/www/html
+sudo apt-get -y update
+sudo apt-get -y install nginx
 sudo ufw allow 'Nginx HTTP'
 sudo chown -R "$USER":"$USER" /var/www/html
 sudo touch /var/www/html/index.html
-cat << 'EOF' | sudo tee /var/www/html/index.html
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-    <h1>Hello World!</h1>
-</body>
-</html>
-EOF
-
-service nginx restart
+sudo bash -c "hello world!" > /var/www/html/index.html
+sudo service nginx restart
