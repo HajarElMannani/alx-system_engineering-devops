@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+#Script that configures a new Ubuntu machine
+sudo apt-get -y install nginx
+sudo mkdir -p /var/www/html
+cat << 'EOF' | sudo tee /etc/nginx/sites-available/default
+server {
+       listen 80 default_server;
+       listen [::]:80 default_server;
+
+       root /var/www/html;
+       index index.html index.htm;
+}
+EOF
+touch /var/www/html/index.html
+cat << 'EOF' | sudo tee /var/www/html/index.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <h1>Hello World!</h1>
+</body>
+</html>
+EOF  
+
+sudo service nginx restart
