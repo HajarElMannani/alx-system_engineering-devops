@@ -8,19 +8,14 @@ sudo touch /var/www/html/index.html
 sudo echo  "Hello World!" | sudo tee /var/www/html/index.html
 cat << 'EOF' | sudo tee /etc/nginx/sites-available/default
 server {
-    listen 80;
-    listen [::]:80;
+    listen 80 default_server;
+    listen [::]:80 default_server;
 
     root /var/www/html;
-    index index.html;
-
-    server_name_;
-    # Redirect /redirect_me to another page
+    index index.html index.htm;
+    
     location = /redirect_me {
         return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-    }
-    location / {
-        try_files $uri $uri/ =404;
     }
 }
 EOF
