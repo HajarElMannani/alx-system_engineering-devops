@@ -8,7 +8,6 @@ global
     log /dev/log    local1 notice
     chroot /var/lib/haproxy
     stats socket /run/haproxy/admin.sock mode 660 level admin
-    stats timeout 30s
     user haproxy
     group haproxy
     daemon
@@ -30,3 +29,4 @@ backend web_servers
     server 531208-web-01 54.236.45.210:80 check
     server 531208-web-02 54.197.82.208:80 check
 EOF
+service haproxy start
