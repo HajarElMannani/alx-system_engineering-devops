@@ -2,4 +2,3 @@
 #Using what has been done for task #0, make your fix short and sweet
 sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 sudo service nginx start
-kill "$(pgrep 'nginx' | head -1)"
