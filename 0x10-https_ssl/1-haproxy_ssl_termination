@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+#Create a certificate using certbot and configure HAproxy to accept encrypted traffic for your subdomain www
+global
+    log /dev/log local0
+    log /dev/log local1 notice
+    chroot /var/lib/haproxy
+    user haproxy
+    group haproxy
+    daemon
+    tune.ssl.default-dh-param 2048
+defaults
+    log     global
+    option  httplog
+    mode    http
+    option  dontlognull
+    option  redispatch
+    timeout connect 5000ms
+    timeout client  50000ms
+    timeout server  50000ms
+
+frontend http_front
+    bind 0.0.0.0:80
+    reqadd X-Forwarded-Proto:\ http
+    default_backend web_servers
+
+frontend https_front
+    bind   0.0.0.0:443 ssl crt /etc/haproxy/certs/www.bdbnb.site.pem
+    reqadd X-Forwarded-Proto:\ https
+    acl    letsencrypt-acl path_beg /.well-known/acme-challenge/
+    use_backend letsencrypt-backend if letsencrypt-acl
+    default_backend www-backend
+    
+backend web_servers
+    balance roundrobin
+    server 531208-web-01 54.236.45.210:80 check
+    server 531208-web-02 54.197.82.208:80 check
