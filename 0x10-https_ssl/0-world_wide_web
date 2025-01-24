@@ -13,7 +13,7 @@ then
   query_subdomain "$1" "$2"
 elif [ "$#" == 1 ]
 then
-  query_subdomain"$1" "www"
+  query_subdomain "$1" "www"
   query_subdomain "$1" "lb-01"
   query_subdomain "$1" "web-01"
   query_subdomain "$1" "web-02"
