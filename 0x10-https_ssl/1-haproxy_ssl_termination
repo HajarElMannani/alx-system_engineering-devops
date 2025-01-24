@@ -20,20 +20,23 @@ defaults
     timeout server  50000ms
     option  forwardfor
     option  http-server-close
-    
+
 frontend http_front
     bind 0.0.0.0:80
     reqadd X-Forwarded-Proto:\ http
+    acl letsencrypt-acl path_beg /.well-known/acme-challenge/
+    use_backend letsencrypt-backend if letsencrypt-acl
     default_backend web_servers
 
 frontend https_front
-    bind   0.0.0.0:443 ssl crt /etc/haproxy/certs/www.bdbnb.site.pem
+    bind 0.0.0.0:443 ssl crt /etc/haproxy/certs/www.bdbnb.site.pem
     reqadd X-Forwarded-Proto:\ https
-    acl    letsencrypt-acl path_beg /.well-known/acme-challenge/
-    use_backend letsencrypt-backend if letsencrypt-acl
     default_backend web_servers
-    
+
 backend web_servers
     balance roundrobin
     server 531208-web-01 54.236.45.210:80 check
     server 531208-web-02 54.197.82.208:80 check
+
+backend letsencrypt-backend
+    server letsencrypt 127.0.0.1:8080
