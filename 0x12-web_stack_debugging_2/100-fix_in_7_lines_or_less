@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #Bash script that makes nginx running as nginx userand listening on port all active IPs on port 8080 in seven lines or less.
 chmod 644 /etc/nginx/nginx.conf
-sed -Ei "s/#user www-data/user nginx/" /etc/nginx/nginx.conf
-sed -Ei "s/80/8080/g" /etc/nginx/sites-available/default
+sed -i "s/#user www-data/user nginx/" /etc/nginx/nginx.conf
+sed -i "s/80/8080/g" /etc/nginx/sites-available/default
 pkill apache2
 sudo -u nginx service nginx start
