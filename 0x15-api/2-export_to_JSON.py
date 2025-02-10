@@ -12,12 +12,16 @@ if __name__ == "__main__":
                              "todos", params={"userId": argv[1]})
     todos = req_todos.json()
     username = employee['username']
-    values = []
-    for task in todos:
-        task_dict = {"task": task["title"],
-                     "completed": task["completed"],
-                     "username": username}
-        values.append(task_dict)
-    data = {argv[1]: values}
+#    values = []
+#    for task in todos:
+#        task_dict = {"task": task["title"],
+#                     "completed": task["completed"],
+#                     "username": username}
+#        values.append(task_dict)
+#    data = {argv[1]: values}
     with open("{}.json".format(argv[1]), "w") as my_file:
-        json.dump(data, my_file)
+        json.dump({argv[1]: [{
+                "task": task.get("title"),
+                "completed": task.get("completed"),
+                "username": username
+            } for task in todos]}, my_file)
