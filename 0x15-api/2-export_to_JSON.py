@@ -18,6 +18,6 @@ if __name__ == "__main__":
                      "completed": task["completed"],
                      "username": username}
         values.append(task_dict)
-    data = {f"{argv[1]}": values}
+    data = {argv[1]: values}
     with open(f"{argv[1]}.json", "w") as my_file:
         json.dump(data, my_file)
