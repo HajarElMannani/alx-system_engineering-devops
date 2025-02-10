@@ -19,5 +19,5 @@ if __name__ == "__main__":
                      "username": username}
         values.append(task_dict)
     data = {argv[1]: values}
-    with open(f"{argv[1]}.json", "w") as my_file:
+    with open("{}.json".format(argv[1]), "w") as my_file:
         json.dump(data, my_file)
