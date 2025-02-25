@@ -11,10 +11,11 @@ def recurse(subreddit, hot_list=[], after=None):
     url = 'https://www.reddit.com/r/' + subreddit + '/hot.json'
     headers = {'User-Agent': 'ALX-Project/1.0 by (u/Suspicious_Target472)'}
     resp = requests.get(url, headers=headers, allow_redirects=False)
-    data = response.json().get('data', {})
-    children = data.get('children', [])
-    for post in children:
-        hot_l.append(post['data']['title'])
+    if resp.status_code == 200:
+        data = resp.json().get('data', {})
+        children = data.get('children', [])
+        for post in children:
+            hot_l.append(post['data']['title'])
         after = data.get('after')
         if after is not None:
             return recurse(subreddit, hot_l, after)
