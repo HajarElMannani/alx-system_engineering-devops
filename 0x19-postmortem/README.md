@@ -13,15 +13,15 @@ The 500 Internal Server Error Apocalypse
 
 ## Timeline
 
-   - 13:15 UTC - Deployment of a backend update. Everything looked fine. Confidence was high. ☀️
-   - 13:17 UTC - Monitoring alerts detected a spike in 500 errors.
-    -13:20 UTC - Reports from users and internal teams confirmed that the system was completely down.
-    -13:25 UTC - Engineers checked server logs—all errors pointed to database connection failures. so we assumed the database server had died. 💀
-    -13:30 UTC - Initial assumption: database server crashed. Investigation showed the database was up but rejecting connections.
-    -13:40 UTC - A deep dive into the latest code changes revealed that a new background job was opening connections but never closing them.
-    -13:45 UTC - Hotfix prepared to properly close connections.
-    -14:00 UTC - Fix deployed, and API requests gradually started succeeding. Users stopped screaming. 🎉
-    -14:05 UTC - System fully operational again.
+   - 13:15 UTC - Deployment of a backend update. Everything looked fine. Confidence was high. ☀️  
+   - 13:17 UTC - Monitoring alerts detected a spike in 500 errors.  
+    -13:20 UTC - Reports from users and internal teams confirmed that the system was completely down.  
+    -13:25 UTC - Engineers checked server logs—all errors pointed to database connection failures. so we assumed the database server had died. 💀  
+    -13:30 UTC - Initial assumption: database server crashed. Investigation showed the database was up but rejecting connections.  
+    -13:40 UTC - A deep dive into the latest code changes revealed that a new background job was opening connections but never closing them.  
+    -13:45 UTC - Hotfix prepared to properly close connections.  
+    -14:00 UTC - Fix deployed, and API requests gradually started succeeding. Users stopped screaming. 🎉  
+    -14:05 UTC - System fully operational again.  
 
 ## Root Cause and Resolution
 - Root Cause:
@@ -32,21 +32,21 @@ The 500 Internal Server Error Apocalypse
 
 - Resolution:
 
-   - Updated the job to close database connections after execution:
-'''
+   - Updated the job to close database connections after execution:  
+```
     def process_analytics():
         conn = db.connect()
         try:
             run_query(conn)
         finally:
-            conn.close()  # Ensuring the connection is properly closed
-'''
-   - Deployed the fix, restoring normal operations.
+            conn.close()  # Ensuring the connection is properly closed  
+```  
+   - Deployed the fix, restoring normal operations.  
 
-   - Restarted affected services to clear lingering connections.
+   - Restarted affected services to clear lingering connections.  
 
 ## Corrective and Preventative Measures
-### What Can Be Improved?
+### What Can Be Improved?  
 
     - Better database connection management in background tasks.
     - Increase monitoring on database connection usage. f they spike unexpectedly, sound the alarms.
