@@ -46,7 +46,7 @@ The 500 Internal Server Error Apocalypse
    - Restarted affected services to clear lingering connections.  
 
 ## Corrective and Preventative Measures
-### What Can Be Improved?  
+What Can Be Improved?  
     - Better database connection management in background tasks.
     - Increase monitoring on database connection usage. f they spike unexpectedly, sound the alarms.
     - Set up circuit breakers to prevent new jobs from overloading the database.
