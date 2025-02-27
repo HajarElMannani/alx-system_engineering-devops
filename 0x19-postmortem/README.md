@@ -47,17 +47,16 @@ The 500 Internal Server Error Apocalypse
 
 ## Corrective and Preventative Measures
 ### What Can Be Improved?  
-
     - Better database connection management in background tasks.
     - Increase monitoring on database connection usage. f they spike unexpectedly, sound the alarms.
     - Set up circuit breakers to prevent new jobs from overloading the database.
 
 ## TODO List to address the issue:
 
-☑ Implement database connection pooling to manage requests efficiently.
-☑ Set up alerts if database connections approach the limit.
-☑ Review all background jobs before deployment (no more free-for-all coding).
-☑ Simulate heavy traffic in testing to catch issues early.
+☑ Implement database connection pooling to manage requests efficiently.  
+☑ Set up alerts if database connections approach the limit.  
+☑ Review all background jobs before deployment (no more free-for-all coding).  
+☑ Simulate heavy traffic in testing to catch issues early.  
 
 ## Final Thoughts
 
