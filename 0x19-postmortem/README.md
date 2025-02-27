@@ -3,7 +3,7 @@ The 500 Internal Server Error Apocalypse
 ## Issue Summary
 
    - Duration: February 27, 2025, 13:15 - 14:05 UTC (50 minutes of pure chaos)
-    -Impact:
+   - Impact:
         100% of API requests returned a 500 error, Yes, every. Single. One. (Internal Server Error).
         Web and mobile apps became unusable—users couldn’t log in, retrieve data, or complete transactions.
         Over 5,000 error logs generated per minute.
