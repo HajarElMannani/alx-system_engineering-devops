@@ -8,20 +8,20 @@ The 500 Internal Server Error Apocalypse
         Web and mobile apps became unusable—users couldn’t log in, retrieve data, or complete transactions.
         Over 5,000 error logs generated per minute.
         Customer support tickets increased by 300% in under an hour.
-    -Root Cause:
+   - Root Cause:
     A database connection limit was exceeded, causing all requests to fail.
 
 ## Timeline
 
    - 13:15 UTC - Deployment of a backend update. Everything looked fine. Confidence was high. ☀️  
    - 13:17 UTC - Monitoring alerts detected a spike in 500 errors.  
-    -13:20 UTC - Reports from users and internal teams confirmed that the system was completely down.  
-    -13:25 UTC - Engineers checked server logs—all errors pointed to database connection failures. so we assumed the database server had died. 💀  
-    -13:30 UTC - Initial assumption: database server crashed. Investigation showed the database was up but rejecting connections.  
-    -13:40 UTC - A deep dive into the latest code changes revealed that a new background job was opening connections but never closing them.  
-    -13:45 UTC - Hotfix prepared to properly close connections.  
-    -14:00 UTC - Fix deployed, and API requests gradually started succeeding. Users stopped screaming. 🎉  
-    -14:05 UTC - System fully operational again.  
+   - 13:20 UTC - Reports from users and internal teams confirmed that the system was completely down.  
+   - 13:25 UTC - Engineers checked server logs—all errors pointed to database connection failures. so we assumed the database server had died. 💀  
+   - 13:30 UTC - Initial assumption: database server crashed. Investigation showed the database was up but rejecting connections.  
+   - 13:40 UTC - A deep dive into the latest code changes revealed that a new background job was opening connections but never closing them.  
+   - 13:45 UTC - Hotfix prepared to properly close connections.  
+   - 14:00 UTC - Fix deployed, and API requests gradually started succeeding. Users stopped screaming. 🎉  
+   - 14:05 UTC - System fully operational again.  
 
 ## Root Cause and Resolution
 - Root Cause:
