@@ -1,10 +1,10 @@
 #increase user limit for opening files
-exec { 'increase holbertin hard limit':
-  command => 'sed -i "/holberton hard/s/5/5000" /etc/security/limits.conf',
-  path    => "/bin/"
+exec { 'holberton-hard-limit':
+  command => 'sed -i "s/holberton hard nofile 5/holberton hard nofile 5000/g" /etc/security/limits.conf',
+  path    => '/usr/bin/:/bin/',
 }
 
-exec { 'increase holbertin soft limit':
-  command => 'sed -i "/holberton soft/s/4/4000" /etc/security/limits.conf',
-  path  => "/bin/"
+exec { 'holberton-soft-limit':
+  command => 'sed -i "s/holberton soft nofile 4/holberton soft nofile 4000/g" /etc/security/limits.conf',
+  path  => '/usr/bin/:/bin/',
 }
