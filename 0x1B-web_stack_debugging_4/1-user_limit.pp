@@ -5,7 +5,6 @@ exec { 'increase holbertin hard limit':
 }
 
 exec { 'increase holbertin soft limit':
-command => 'sed -i "/holberton soft/s/4/4000" /etc/security/limits.
-conf',
+  command => 'sed -i "/holberton soft/s/4/4000" /etc/security/limits.conf',
   path  => "/bin/"
 }
