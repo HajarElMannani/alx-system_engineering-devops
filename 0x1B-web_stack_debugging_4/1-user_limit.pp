@@ -6,5 +6,5 @@ exec { 'holberton-hard-limit':
 
 exec { 'holberton-soft-limit':
   command => 'sed -i "s/holberton soft nofile 4/holberton soft nofile 4000/g" /etc/security/limits.conf',
-  path  => '/usr/local/bin/:/bin/',
+  path    => '/usr/local/bin/:/bin/',
 }
